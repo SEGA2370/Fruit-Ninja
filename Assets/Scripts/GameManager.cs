@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
@@ -7,6 +7,8 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI highScoreText;
+    private int highScore;
     [SerializeField] Image fadeImage;
 
     private Blade blade;
@@ -27,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     private void NewGame()
     {
-        Time.timeScale = 1f; 
+        Time.timeScale = 1f;
 
         blade.enabled = true;
         spawner.enabled = true;
@@ -36,6 +38,9 @@ public class GameManager : MonoBehaviour
         scoreText.text = score.ToString();
 
         ClearScene();
+
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        highScoreText.text = $"{highScore}";
     }
 
     private void ClearScene()
@@ -57,7 +62,7 @@ public class GameManager : MonoBehaviour
 
     public void IncreaseScore()
     {
-        score ++;
+        score++;
         scoreText.text = score.ToString();
     }
 
@@ -80,7 +85,7 @@ public class GameManager : MonoBehaviour
             fadeImage.color = Color.Lerp(Color.clear, Color.white, t);
 
             Time.timeScale = 1f - t;
-            elapsed += Time.unscaledDeltaTime;  
+            elapsed += Time.unscaledDeltaTime;
 
             yield return null;
         }
