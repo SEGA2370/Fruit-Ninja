@@ -1,6 +1,6 @@
 # 🍉 Fruit Ninja (Clone)
 
-<img src="Assets/Images/fruitninja_preview.jpg" alt="Fruit Ninja Gameplay" width="600"/>
+<img src="Assets/Fruit.jpg" alt="Fruit Ninja Gameplay" width="600"/>
 
 ## 🎮 Game Overview
 
